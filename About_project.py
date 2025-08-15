@@ -1,5 +1,5 @@
 import streamlit as st
-import pyodbc 
+import mysql.connector
 import pandas as pd
 
 # side-bar features
@@ -31,14 +31,16 @@ st.text('features are:\nid : Unique identifier\ngender : Male / Female / Other\n
 st.markdown("---")
 st.markdown('### A snip of the dataframe:')
 #coonection to snip some data
-conn = pyodbc.connect("DRIVER={MySQL ODBC 9.3 Unicode Driver};"
-    "SERVER=midproject-midproject.h.aivencloud.com;"
-    "PORT=17017;"
-    "DATABASE=stroke_project;"
-    "UID=avnadmin;"
-    "PWD=AVNS_4cb10TGYTOTF7KRj5r3;"
-    "OPTION=3;",
-    autocommit=True)
+
+
+conn = mysql.connector.connect(
+    host="midproject-midproject.h.aivencloud.com",
+    port=17017,
+    user="avnadmin",
+    password="AVNS_4cb10TGYTOTF7KRj5r3", 
+    database="stroke_project"
+)
+
 
 # quering data    
 command = """           

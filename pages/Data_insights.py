@@ -1,5 +1,5 @@
 import streamlit as st 
-import pyodbc
+import mysql.connector
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -8,14 +8,15 @@ import matplotlib.pyplot as plt
 
 
 # connection to collect the data
-conn = pyodbc.connect("DRIVER={MySQL ODBC 9.3 Unicode Driver};"
-    "SERVER=midproject-midproject.h.aivencloud.com;"
-    "PORT=17017;"
-    "DATABASE=stroke_project;"
-    "UID=avnadmin;"
-    "PWD=AVNS_4cb10TGYTOTF7KRj5r3;"
-    "OPTION=3;",
-    autocommit=True)
+
+conn = mysql.connector.connect(
+    host="midproject-midproject.h.aivencloud.com",
+    port=17017,
+    user="avnadmin",
+    password="AVNS_4cb10TGYTOTF7KRj5r3",  
+    database="stroke_project"
+)
+
 
 # quering data
 command = """           
